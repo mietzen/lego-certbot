@@ -1,0 +1,2 @@
+@reboot  /usr/bin/lego-certbot >> /var/log/cron 2>&1
+@monthly /usr/bin/lego-certbot >> /var/log/cron 2>&1

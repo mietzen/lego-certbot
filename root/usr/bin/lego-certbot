@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+action='renew'
+for domain in ${DOMAINS//,/ }; do
+    if ! lego list -n | grep -q "$domain"; then
+        action=run
+    fi
+done
+
+lego --accept-tos --path /data --email $EMAIL --dns $DNS_PROVIDER --domains $DOMAINS $action
