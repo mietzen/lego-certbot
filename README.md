@@ -1,6 +1,6 @@
 # Lego-Certbot
 
-# Certbot alternative based on the amazing [LEGO](https://github.com/go-acme/lego).
+Certbot alternative based on the amazing [LEGO](https://github.com/go-acme/lego).
 
 ## Usage
 
