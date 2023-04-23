@@ -1,15 +1,6 @@
-# Lego-Certbot
-
-Certbot alternative based on the amazing [LEGO](https://github.com/go-acme/lego).
-
-## Usage
-
-Cloudflare + NGINX example: 
-
-```yaml
 version: "3"
 services:
-  cloudflare-lego-certbot:
+  lego-certbot:
     image: mietzen/lego-certbot:v4.10
     restart: always
     environment:
@@ -45,7 +36,3 @@ networks:
 
 volumes:
   certs:
-```
-
-For other DNS Providers see: [LEGO DNS PROVIDERS](https://go-acme.github.io/lego/dns/)
-And set the needed environment variables.
