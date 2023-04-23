@@ -52,11 +52,11 @@ jobs:
         ARCH=$(echo "${PLATFORM}" | awk -F  "/" '{print $2$3}')
         echo ""
         echo "============================================================="
-        echo "Building: ${DOCKER_USER}/lego-certbot:${ARCH}-${BUILD_NR}"
+        echo "Building: ${DOCKER_USER}/lego-certbot:v4.10-${ARCH}-${BUILD_NR}"
         echo "============================================================="
         echo ""
         docker buildx build \
-          --tag "${DOCKER_USER}/lego-certbot:${ARCH}-${BUILD_NR}" \
+          --tag "${DOCKER_USER}/lego-certbot:v4.10-${ARCH}-${BUILD_NR}" \
           --platform ${PLATFORM} \
           --load \
           -f Dockerfile .
@@ -71,12 +71,12 @@ jobs:
         ARCH=$(echo "${PLATFORM}" | awk -F  "/" '{print $2$3}')
         echo ""
         echo "============================================================="
-        echo "Pushing: ${DOCKER_USER}/lego-certbot:${ARCH}-${BUILD_NR}"
+        echo "Pushing: ${DOCKER_USER}/lego-certbot:v4.10-${ARCH}-${BUILD_NR}"
         echo "============================================================="
         echo ""
-        docker tag "${DOCKER_USER}/lego-certbot:${ARCH}-${BUILD_NR}" "${DOCKER_USER}/lego-certbot:${ARCH}"
-        docker push "${DOCKER_USER}/lego-certbot:${ARCH}-${BUILD_NR}"
-        docker push "${DOCKER_USER}/lego-certbot:${ARCH}"
+        docker tag "${DOCKER_USER}/lego-certbot:v4.10-${ARCH}-${BUILD_NR}" "${DOCKER_USER}/lego-certbot:v4.10-${ARCH}"
+        docker push "${DOCKER_USER}/lego-certbot:v4.10-${ARCH}-${BUILD_NR}"
+        docker push "${DOCKER_USER}/lego-certbot:v4.10-${ARCH}"
 
   Shared-Manifest:
     if: github.event_name == 'push' && github.ref_name == 'main'
@@ -107,7 +107,7 @@ jobs:
         echo -n "docker manifest create ${DOCKER_USER}/lego-certbot:v4.10" >> push-shared-tags.sh
         while read -r PLATFORM; do
           ARCH=$(echo "${PLATFORM}" | awk -F  "/" '{print $2$3}')
-          echo -n " ${DOCKER_USER}/lego-certbot:${ARCH}-${BUILD_NR}" >> push-shared-tags.sh
+          echo -n " ${DOCKER_USER}/lego-certbot:v4.10-${ARCH}-${BUILD_NR}" >> push-shared-tags.sh
         done <<< "$(cat .github/platforms.json | jq -r '.platforms | join("\n")')"
         echo "" >> push-shared-tags.sh
         echo "docker manifest push ${DOCKER_USER}/lego-certbot:v4.10" >> push-shared-tags.sh
