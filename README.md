@@ -10,7 +10,7 @@ Cloudflare + NGINX example:
 version: "3"
 services:
   cloudflare-lego-certbot:
-    image: mietzen/lego-certbot:v4.10
+    image: mietzen/lego-certbot:v4.12
     restart: always
     environment:
       - CLOUDFLARE_DNS_API_TOKEN=YOUR_TOKEN
