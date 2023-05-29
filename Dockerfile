@@ -1,4 +1,4 @@
-FROM goacme/lego:v4.11 AS LEGO
+FROM goacme/lego:v4.12 AS LEGO
 
 FROM alpine:3
 RUN apk update \
