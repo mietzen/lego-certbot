@@ -94,6 +94,7 @@ jobs:
       - Setup
     env:
       VERSION: ${{ needs.Setup.outputs.version }}
+      IMAGE_NAME: ${{ vars.IMAGE_NAME || needs.Setup.outputs.repo_name_lower_case }}
     steps:
     - name: Checkout
       uses: actions/checkout@v4
